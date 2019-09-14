@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">keyboard</string>
+
+    <!--按键区域-->
+    <string name="pre_text">按键预览</string>
+    <string name="btn_mode">c</string><!--修改为清除文本-->
+    <string name="btn_del">del</string>
+    <string name="btn_mult">/</string>
+    <string name="btn_div">*</string>
+    <string name="btn_sub">-</string>
+    <string name="btn_add">+</string>
+    <string name="btn_enter">enter</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+
+    <!--地址区域-->
+    <string name="ip">IP : </string>
+    <string name="connect">连接</string>
+    <string name="ip_add">IP地址</string>
+
+
+</resources>

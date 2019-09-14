@@ -12,9 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -22,32 +20,40 @@ import java.net.UnknownHostException;
 public class MainActivity extends AppCompatActivity {
 
     private static String host = "192.168.137.1";
-
+    final EditText editText = findViewById(R.id.IP_Add);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final EditText editText = (EditText) findViewById(R.id.IP_Add);
+
         editText.setText(host);
         //Toast.makeText(MainActivity.this, "无线已开启", Toast.LENGTH_SHORT).show();
 
     }
 
+    //连接指定IP
     public void connect(View view) {
-        final EditText editText = (EditText) findViewById(R.id.IP_Add);
-        String add_str = editText.getText().toString();
-        editText.setText(add_str);
 
-        //TODO 修改地址之前先Ping一下是否联通，联通再设置
-        host = add_str;//修改地址
-        Log.d("IP_ADD", add_str);
+        String add_str = editText.getText().toString();
+        //editText.setText(add_str);
+
+        // 修改地址之前先Ping一下是否联通，联通再设置
+        if (Util.connetTest(host)) {
+            host = add_str;//修改地址
+            Log.d("IP_ADD", add_str);
+
+            //修改IP将文本清空
+            final TextView textView = findViewById(R.id.textView);
+            textView.setText("按键预览");
+            Toast.makeText(MainActivity.this, "正在连接到" + host, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "目标主机拒绝连接或不可用" + host, Toast.LENGTH_SHORT).show();
+        }
 
         //失焦并并关闭键盘
         editText.clearFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
-        //TODO 修改后谈一个弹窗出来，表明是否成功
-        Toast.makeText(MainActivity.this, "正在连接到"+host, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
      */
 //    private void addText(View views, String btn_str) {
     private void addText(String btn_str) {
-        final TextView textView = (TextView) findViewById(R.id.textView);
+        final TextView textView = findViewById(R.id.textView);
         final String pre = "按键预览";
 
         String text = textView.getText().toString();
@@ -91,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("TCP 传输错误",e.toString());
+            Log.e("TCP 传输错误", e.toString());
         }
 
     }
@@ -102,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
      * @param str 要发送的字符
      */
     public void click(final String str) {
-        final TextView textView = (TextView) findViewById(R.id.textView);
-
         addText(str);//添加预览
 
         //新建线程发送TCP数据，socket不能运行再主线程上
@@ -115,112 +119,114 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    // TODO 将按键ID初始化可以省去以后每次按键都要find的时间和资源
     //  按键 mode
     public void click_mode(View view) {
         //Button btn = (Button) findViewById(R.id.btn_mode);
         //click(btn.getText().toString());
-        final TextView textView = (TextView) findViewById(R.id.textView);
+        final TextView textView = findViewById(R.id.textView);
         textView.setText("按键预览");
     }
 
     // 按键 /
     public void click_mult(View view) {
-        Button btn = (Button) findViewById(R.id.btn_mult);
+        Button btn = findViewById(R.id.btn_mult);
         click(btn.getText().toString());
     }
 
     // 按键 *
     public void click_div(View view) {
-        Button btn = (Button) findViewById(R.id.btn_div);
+        Button btn = findViewById(R.id.btn_div);
         click(btn.getText().toString());
     }
 
     // 按键 -
     public void click_sub(View view) {
-        Button btn = (Button) findViewById(R.id.btn_sub);
+        Button btn = findViewById(R.id.btn_sub);
         click(btn.getText().toString());
     }
 
     // 按键 +
     public void click_add(View view) {
-        Button btn = (Button) findViewById(R.id.btn_add);
+        Button btn = findViewById(R.id.btn_add);
         click(btn.getText().toString());
     }
 
     // 按键 enter
     public void click_enter(View view) {
-        Button btn = (Button) findViewById(R.id.btn_enter);
+        Button btn = findViewById(R.id.btn_enter);
         click(btn.getText().toString());
     }
 
     // 按键 .
     public void click_dot(View view) {
-        Button btn = (Button) findViewById(R.id.btn_dot);
+        Button btn = findViewById(R.id.btn_dot);
         click(btn.getText().toString());
     }
+
     // 按键 DEL
     public void click_del(View view) {
-        Button btn = (Button) findViewById(R.id.btn_del);
+        Button btn = findViewById(R.id.btn_del);
         click(btn.getText().toString());
     }
 
     // 按键 0
     public void click_0(View view) {
-        Button btn = (Button) findViewById(R.id.btn_0);
+        Button btn = findViewById(R.id.btn_0);
         click(btn.getText().toString());
     }
 
     // 按键 1
     public void click_1(View view) {
-        Button btn = (Button) findViewById(R.id.btn_1);
+        Button btn = findViewById(R.id.btn_1);
         click(btn.getText().toString());
     }
 
     // 按键 2
     public void click_2(View view) {
-        Button btn = (Button) findViewById(R.id.btn_2);
+        Button btn = findViewById(R.id.btn_2);
         click(btn.getText().toString());
     }
 
     // 按键 3
     public void click_3(View view) {
-        Button btn = (Button) findViewById(R.id.btn_3);
+        Button btn = findViewById(R.id.btn_3);
         click(btn.getText().toString());
     }
 
     // 按键 4
     public void click_4(View view) {
-        Button btn = (Button) findViewById(R.id.btn_4);
+        Button btn = findViewById(R.id.btn_4);
         click(btn.getText().toString());
     }
 
     // 按键 5
     public void click_5(View view) {
-        Button btn = (Button) findViewById(R.id.btn_5);
+        Button btn = findViewById(R.id.btn_5);
         click(btn.getText().toString());
     }
 
     // 按键 6
     public void click_6(View view) {
-        Button btn = (Button) findViewById(R.id.btn_6);
+        Button btn = findViewById(R.id.btn_6);
         click(btn.getText().toString());
     }
 
     // 按键 7
     public void click_7(View view) {
-        Button btn = (Button) findViewById(R.id.btn_7);
+        Button btn = findViewById(R.id.btn_7);
         click(btn.getText().toString());
     }
 
     // 按键 8
     public void click_8(View view) {
-        Button btn = (Button) findViewById(R.id.btn_8);
+        Button btn = findViewById(R.id.btn_8);
         click(btn.getText().toString());
     }
 
     // 按键 9
     public void click_9(View view) {
-        Button btn = (Button) findViewById(R.id.btn_9);
+        Button btn = findViewById(R.id.btn_9);
         click(btn.getText().toString());
     }
 

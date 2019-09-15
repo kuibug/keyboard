@@ -2,11 +2,9 @@ package top.zewenchen.keyboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,12 +18,13 @@ import java.net.UnknownHostException;
 public class MainActivity extends AppCompatActivity {
 
     private static String host = "192.168.137.1";
-    final EditText editText = findViewById(R.id.IP_Add);
+    EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        editText = findViewById(R.id.IP_Add);
         editText.setText(host);
         //Toast.makeText(MainActivity.this, "无线已开启", Toast.LENGTH_SHORT).show();
 
@@ -34,26 +33,28 @@ public class MainActivity extends AppCompatActivity {
     //连接指定IP
     public void connect(View view) {
 
-        String add_str = editText.getText().toString();
+        //处理失焦并关闭软键盘
+        Util.hideSoftKeyboard(MainActivity.this, editText);
+        editText.clearFocus();
+        Log.d("TEST", "********关闭键盘");
+
+
+        final String add_str = editText.getText().toString();
         //editText.setText(add_str);
 
         // 修改地址之前先Ping一下是否联通，联通再设置
-        if (Util.connetTest(host)) {
+        if (Util.connectTest(add_str)) {
             host = add_str;//修改地址
             Log.d("IP_ADD", add_str);
 
             //修改IP将文本清空
             final TextView textView = findViewById(R.id.textView);
             textView.setText("按键预览");
-            Toast.makeText(MainActivity.this, "正在连接到" + host, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "正在连接到" + add_str, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(MainActivity.this, "目标主机拒绝连接或不可用" + host, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "目标主机拒绝连接或不可用" + add_str, Toast.LENGTH_SHORT).show();
         }
 
-        //失焦并并关闭键盘
-        editText.clearFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
     }
 
     /**
@@ -229,5 +230,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.btn_9);
         click(btn.getText().toString());
     }
+
 
 }

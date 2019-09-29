@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String host = "192.168.137.1";
+    private static String host = "192.168.109.114";
     EditText editText;
 
     @Override

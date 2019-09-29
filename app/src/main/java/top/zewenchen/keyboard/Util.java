@@ -9,9 +9,9 @@ import java.io.IOException;
 
 import androidx.annotation.NonNull;
 
-public class Util {
+ class Util {
 
-    public static boolean connectTest(String host) {
+     static boolean connectTest(String host) {
         //boolean result = false;
         String cmd = "ping -c 2 -w 2 " + host;
         Runtime runtime = Runtime.getRuntime();
@@ -42,7 +42,7 @@ public class Util {
      * @param context   activity的ID
      * @param mEditText 输入框的ID
      */
-    public static void hideSoftKeyboard(@NonNull Context context,
+     static void hideSoftKeyboard(@NonNull Context context,
                                         @NonNull EditText mEditText) {
         InputMethodManager input_manger = (InputMethodManager) context
                 .getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -13,7 +13,7 @@
     <Button
         android:id="@+id/btn_mode"
         style="@style/btn"
-        android:onClick="click_mode"
+        android:onClick="clicked"
         android:text="@string/btn_mode"
         app:layout_constraintBottom_toTopOf="@+id/btn_7"
         app:layout_constraintStart_toStartOf="parent" />
@@ -23,7 +23,7 @@
         style="@style/btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:onClick="click_del"
+        android:onClick="clicked"
         android:text="@string/btn_del"
         app:layout_constraintBottom_toTopOf="@+id/btn_sub"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
     <Button
         android:id="@+id/btn_div"
         style="@style/btn"
-        android:onClick="click_div"
+        android:onClick="clicked"
         android:text="@string/btn_div"
         app:layout_constraintBottom_toTopOf="@+id/btn_9"
         app:layout_constraintStart_toEndOf="@+id/btn_mult" />
@@ -40,7 +40,7 @@
     <Button
         android:id="@+id/btn_mult"
         style="@style/btn"
-        android:onClick="click_mult"
+        android:onClick="clicked"
         android:text="@string/btn_mult"
         app:layout_constraintBottom_toTopOf="@+id/btn_8"
         app:layout_constraintStart_toEndOf="@+id/btn_mode" />
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/btn_sub"
         style="@style/btn"
-        android:onClick="click_sub"
+        android:onClick="clicked"
         android:text="@string/btn_sub"
         app:layout_constraintBottom_toTopOf="@+id/btn_add"
         app:layout_constraintStart_toEndOf="@+id/btn_div" />
@@ -56,7 +56,7 @@
     <Button
         android:id="@+id/btn_7"
         style="@style/btn"
-        android:onClick="click_7"
+        android:onClick="clicked"
         android:text="@string/btn_7"
         app:layout_constraintBottom_toTopOf="@+id/btn_4"
         app:layout_constraintStart_toStartOf="@+id/btn_mode" />
@@ -64,7 +64,7 @@
     <Button
         android:id="@+id/btn_8"
         style="@style/btn"
-        android:onClick="click_8"
+        android:onClick="clicked"
         android:text="@string/btn_8"
         app:layout_constraintBottom_toTopOf="@+id/btn_5"
         app:layout_constraintStart_toEndOf="@+id/btn_7" />
@@ -72,7 +72,7 @@
     <Button
         android:id="@+id/btn_9"
         style="@style/btn"
-        android:onClick="click_9"
+        android:onClick="clicked"
         android:text="@string/btn_9"
         app:layout_constraintBottom_toTopOf="@+id/btn_6"
         app:layout_constraintStart_toEndOf="@+id/btn_8" />
@@ -80,7 +80,7 @@
     <Button
         android:id="@+id/btn_add"
         style="@style/btn"
-        android:onClick="click_add"
+        android:onClick="clicked"
         android:text="@string/btn_add"
         app:layout_constraintBottom_toTopOf="@+id/btn_enter"
         app:layout_constraintHeight_percent="0.3"
@@ -89,7 +89,7 @@
     <Button
         android:id="@+id/btn_4"
         style="@style/btn"
-        android:onClick="click_4"
+        android:onClick="clicked"
         android:text="@string/btn_4"
         app:layout_constraintBottom_toTopOf="@+id/btn_1"
         app:layout_constraintStart_toStartOf="@+id/btn_7" />
@@ -97,7 +97,7 @@
     <Button
         android:id="@+id/btn_5"
         style="@style/btn"
-        android:onClick="click_5"
+        android:onClick="clicked"
         android:text="@string/btn_5"
         app:layout_constraintBottom_toTopOf="@+id/btn_2"
         app:layout_constraintStart_toEndOf="@+id/btn_4" />
@@ -105,7 +105,7 @@
     <Button
         android:id="@+id/btn_6"
         style="@style/btn"
-        android:onClick="click_6"
+        android:onClick="clicked"
         android:text="@string/btn_6"
         app:layout_constraintBottom_toTopOf="@+id/btn_3"
         app:layout_constraintStart_toEndOf="@+id/btn_5" />
@@ -113,7 +113,7 @@
     <Button
         android:id="@+id/btn_1"
         style="@style/btn"
-        android:onClick="click_1"
+        android:onClick="clicked"
         android:text="@string/btn_1"
         app:layout_constraintBottom_toTopOf="@+id/btn_0"
         app:layout_constraintStart_toStartOf="@+id/btn_4" />
@@ -121,7 +121,7 @@
     <Button
         android:id="@+id/btn_2"
         style="@style/btn"
-        android:onClick="click_2"
+        android:onClick="clicked"
         android:text="@string/btn_2"
         app:layout_constraintBottom_toTopOf="@+id/btn_0"
         app:layout_constraintStart_toEndOf="@+id/btn_1" />
@@ -129,7 +129,7 @@
     <Button
         android:id="@+id/btn_3"
         style="@style/btn"
-        android:onClick="click_3"
+        android:onClick="clicked"
         android:text="@string/btn_3"
         app:layout_constraintBottom_toTopOf="@+id/btn_dot"
         app:layout_constraintStart_toEndOf="@+id/btn_2" />
@@ -137,7 +137,7 @@
     <Button
         android:id="@+id/btn_enter"
         style="@style/btn"
-        android:onClick="click_enter"
+        android:onClick="clicked"
         android:text="@string/btn_enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.3"
@@ -148,7 +148,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#f9f9f9"
-        android:onClick="click_0"
+        android:onClick="clicked"
         android:text="@string/btn_0"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -159,7 +159,7 @@
     <Button
         android:id="@+id/btn_dot"
         style="@style/btn"
-        android:onClick="click_dot"
+        android:onClick="clicked"
         android:text="@string/btn_dot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_enter" />

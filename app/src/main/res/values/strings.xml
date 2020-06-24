@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">keyboard</string>
+    <string name="app_name">数字键盘</string>
 
     <!--按键区域-->
     <string name="pre_text">按键预览</string>
